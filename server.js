@@ -1,8 +1,13 @@
+require('dotenv').config()
+
 const express=require('express');
+
+
+
 const mongoose=require('mongoose');
 const BrandName=require('./model');
 
-const env=require('dotenv').config()
+console.log(process.env.MONGO_URL);
 
 const app=express();//initializing express after requiring
 
@@ -19,7 +24,7 @@ app.use(express.json())//middleware or body parse
 
 const connectDB = async () =>{
     try{
-        const conn=await mongoose.connect(process.env.URL);
+        const conn=await mongoose.connect(process.env.MONGO_URL);
         console.log(`MongoDB Connected `);
     } catch(error){
         console.log(error);
